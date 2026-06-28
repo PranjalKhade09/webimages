@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solution Thinkers Portfolio</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    padding:0;
+    background:#0f0f0f;
+    color:#ffffff;
+    line-height:1.6;
+}
+
+/* Header */
+header{
+    background:linear-gradient(135deg,#000000,#393838);
+    color:white;
+    text-align:center;
+    padding:50px 20px;
+    border-bottom:3px solid #00bfff;
+}
+ header h1{
+    display:inline-block;
+    padding:15px 30px;
+    color:white;
+
+    font-size:70px;   /* हे add कर */
+}
+ 
+header h3{
+    color:#d1d5db;
+}
+
+.group-photo-wrap{
+    width:100%;
+    max-width:880px;
+    margin:30px auto;   /* Centers the photo */
+    border-radius:16px;
+    overflow:hidden;
+    border:2px solid rgb(0, 221, 255);
+    box-shadow:0 3px 5px rgb(0, 213, 255);
+}
+.group-photo-wrap img{
+    width:100%;
+    aspect-ratio:16/9;
+    object-fit:cover;
+    display:block;
+}
+.photo-placeholder{
+    width:100%;
+    aspect-ratio:16/9;
+    background:#1a2f50;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    color:rgba(255,255,255,0.28);
+    gap:12px;
+}
+.photo-placeholder .icon{
+    font-size:56px;
+}
+.photo-placeholder p{
+    font-size:13px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+}
+
+.scroll-hint{
+    margin-top:44px;
+    color:rgba(255,255,255,0.32);
+    font-size:11px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+}
+.scroll-arrow{
+    width:1px;
+    height:44px;
+    background:linear-gradient(to bottom,rgb(0, 213, 255),transparent);
+}
+
+/* Sections */
+section{
+    background:#1a1a1a;
+    margin:20px;
+    padding:25px;
+    border-radius:12px;
+    border:1px solid #2d2d2d;
+    transition:all 0.35s ease;
+}
+
+/* Hover Effect */
+section:hover{
+    transform:translateY(-8px) scale(1.01);
+    box-shadow:0 12px 30px rgba(0,191,255,0.25);
+    border-color:#00bfff;
+}
+
+/* Headings */
+h2{
+    color:#00bfff;
+    border-left:5px solid #00bfff;
+    padding-left:12px;
+    margin-bottom:20px;
+}
+
+h3{
+    color:#ffffff;
+}
+
+.team-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+    margin-top:30px;
+}
+
+/* Team Member Cards */
+.member{
+    background:#222222;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:15px;
+    transition:all 0.3s ease;
+}
+
+.member:hover{
+    background:#2b2b2b;
+    transform:translateX(8px);
+    box-shadow:0 6px 20px rgba(0,191,255,0.2);
+}
+.team-section{
+    padding:80px 24px;
+    max-width:1100px;
+    margin:0 auto;
+}
+.member-card{
+    background:var(--white);
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:var(--card-shadow);
+    transition:transform 0.25s,box-shadow 0.25s;
+}
+.member-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 20px 50px rgba(15,31,56,0.15);
+}
+.member-photo{
+    width:100%;
+    height:250px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    background:#303030;
+
+}
+.member-photo img{
+    width:180px;      /* adjust size */
+    height:180px;
+    border-radius:50%; /* circular image */
+    object-fit:cover;
+    display:block;
+
+}
+.member-initial{
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:4rem;
+    font-weight:bold;
+    color:#c9971a;
+    background:#f5f0e6;
+}
+.member-info{
+    padding:22px;
+}
+.member-name{font-weight:600;
+    font-size:1.05rem;
+    color:#00bfff;
+    margin-bottom:4px;
+}
+.member-role{
+    color:#ffffff;
+    font-size:11px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    font-weight:600;
+    margin-bottom:10px;
+}
+.member-bio{font-size:13px;
+    color:var(--gray);
+    line-height:1.75;
+}
+.member-links{display:flex;
+    gap:10px;
+    margin-top:16px;
+}
+.member-links a{width:32px;
+    height:32px;
+    border-radius:50%;
+    border:1px solid #e5e7eb;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--gray);
+    text-decoration:none;
+    font-size:12px;
+    font-weight:700;
+    transition:all 0.2s;
+}
+.member-links a:hover{background:var(--gold);
+    border-color:var(--gold);
+    color:#fff;
+}
+
+
+/* Table */
+table{
+    width:100%;
+    border-collapse:collapse;
+    overflow:hidden;
+    border-radius:10px;
+}
+
+th{
+    background:#00bfff;
+    color:#000000;
+    font-weight:bold;
+}
+
+td{
+    background:#1f1f1f;
+    color:#ffffff;
+}
+
+table, th, td{
+    border:1px solid #333;
+}
+
+th, td{
+    padding:12px;
+    text-align:left;
+}
+
+/* Row Hover */
+tr:hover td{
+    background:#292929;
+    transition:0.3s;
+}
+
+/* Lists */
+ul li{
+    margin-bottom:8px;
+}
+
+/* Links */
+a{
+    color:#00bfff;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+a:hover{
+    color:#66d9ff;
+    text-shadow:0 0 8px #00bfff;
+}
+
+/* Footer */
+footer{
+    background:#000000;
+    color:white;
+    text-align:center;
+    padding:25px;
+    border-top:3px solid #00bfff;
+}
+.logo{
+    width:350px;
+    max-width:100%;
+    display:block;
+    margin:0 auto 20px;
+  filter:drop-shadow(0 0 15px rgba(0,191,255,0.6));
+}
+
+
+.logo:hover{
+    transform:scale(1.05);
+}
+
+/* Responsive */
+@media(max-width:768px){
+    header h1{
+        font-size:50px;
+    }
+}
+    
+.view-btn{
+    background:#00bfff;
+    color:#000;
+    border:none;
+    padding:10px 20px;
+    border-radius:25px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.popup{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.85);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.popup-content{
+    background:#1a1a1a;
+    width:80%;
+    max-width:750px;
+    padding:30px;
+    border-radius:15px;
+    border:2px solid #00bfff;
+    color:white;
+
+    max-height:80vh;   /* Popup height limit */
+    overflow-y:auto;   /* Vertical scrollbar */
+}
+
+.close{
+    float:right;
+    font-size:35px;
+    cursor:pointer;
+    color:#00bfff;
+}
+
+.activities-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+}
+
+.activity-card{
+    background:#222;
+    border:1px solid #00bfff;
+    border-radius:15px;
+    padding:25px;
+    text-align:center;
+    transition:.3s;
+}
+
+.activity-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 10px 25px rgba(0,191,255,.3);
+}
+
+.quick-links{
+    padding:60px 40px;
+    margin-top:40px;
+}
+
+.links-container{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:50px;
+}
+
+.links-column h3{
+    color:#00bfff;
+    margin-bottom:20px;
+}
+
+.links-column a{
+    display:block;
+    color:#d1d5db;
+    text-decoration:none;
+    margin-bottom:12px;
+    transition:0.3s;
+}
+
+.links-column a:hover{
+    color:#00bfff;
+    transform:translateX(6px);
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="https://raw.githubusercontent.com/PranjalKhade09/webimages/main/logo.png"
+         alt="Solution Thinkers Logo"
+         class="logo">
+
+    <!-- <h1>Solution Thinkers</h1>
+    <h3>Turning Ideas Into Solutions</h3> -->
+
+  <!-- GROUP PHOTO: Replace placeholder with your photo -->
+  <!-- <img src="group-photo.jpg" alt="Team Photo"> inside group-photo-wrap -->
+  <div class="group-photo-wrap">
+    <img src="https://raw.githubusercontent.com/PranjalKhade09/webimages/main/group.png" alt="Team Photo">
+    <!-- <div class="photo-placeholder">
+      <div class="icon">📸</div>
+      <p>Add your Group Photo here &mdash; src="group-photo.jpg"</p>
+    </div> -->
+  </div>
+
+  <div class="scroll-hint">
+    <p>Scroll down</p>
+    <div class="scroll-arrow"></div>
+  </div>
+</header>
+
+<section id="about">
+    <h2>About the Team</h2>
+    <p>
+        Solution Thinkers is a team of passionate students focused on Artificial
+        Intelligence, Python Programming, and innovative technology solutions.
+    </p>
+
+    <h3>Vision</h3>
+    <p>To become a skilled and innovative technology team.</p>
+
+    <h3>Mission</h3>
+    <ul>
+        <li>Learn new technologies</li>
+        <li>Build innovative projects</li>
+        <li>Develop teamwork and leadership</li>
+    </ul>
+</section>
+
+<section id="team">
+    <h2>Meet Our Team</h2>
+
+    
+<div class="team-grid">
+    <div class="member">
+        
+        <!-- ✏️ Member 1: Change name, role, bio. Add photo: <img src="rahul.jpg" alt="Rahul Patil"> -->
+        <div class="member-card">
+            <div class="member-photo">
+                <!-- <div class="member-initial">A</div> -->
+                <img src="https://raw.githubusercontent.com/PranjalKhade09/webimages/main/athrva.png" alt="Athrav Naik">
+            </div>
+            <div class="member-info">
+                <div class="member-name">Athrav Naik</div>
+                <div class="member-role">Team Leader</div>
+                <div class="member-bio">Leads the team with clarity and calm. Skilled at decision-making and a constant source of inspiration for every member.</div>
+                <div class="member-links">
+                <a href="#" title="LinkedIn">in</a>
+                <a href="mailto:#" title="Email">✉</a>
+                <a href="#" title="Instagram">ig</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="member">
+               <!-- ✏️ Member 1: Change name, role, bio. Add photo: <img src="rahul.jpg" alt="Rahul Patil"> -->
+        <div class="member-card">
+            <div class="member-photo">
+                <!-- <div class="member-initial">P</div> -->
+                <img src="https://raw.githubusercontent.com/PranjalKhade09/webimages/main/pranjal.png" alt="Pranjal Khade">
+            </div>
+            <div class="member-info">
+                <div class="member-name">Pranjal Khade</div>
+                <div class="member-role">Developer</div>
+                <div class="member-bio">Leads in AI development and technical solutions. Passionate about new technology and building robust systems.</div>
+                <div class="member-links">
+                <a href="#" title="LinkedIn">in</a>
+                <a href="mailto:#" title="Email">✉</a>
+                <a href="#" title="Instagram">ig</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="member">
+              <!-- ✏️ Member 1: Change name, role, bio. Add photo: <img src="rahul.jpg" alt="Rahul Patil"> -->
+        <div class="member-card">
+            <div class="member-photo">
+                <!-- <div class="member-initial">V</div> -->
+                <img src="https://raw.githubusercontent.com/PranjalKhade09/webimages/main/vaibhav.png" alt="Athrav Naik">
+            </div>
+            <div class="member-info">
+                <div class="member-name">Vaibhav Kamble</div>
+                <div class="member-role">Designer</div>
+                <div class="member-bio">Expert in creative design and branding. Gives the team a distinctive visual identity that stands out.        </div>
+                <div class="member-links">
+                <a href="#" title="LinkedIn">in</a>
+                <a href="mailto:#" title="Email">✉</a>
+                <a href="#" title="Instagram">ig</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="member">
+               <!-- ✏️ Member 1: Change name, role, bio. Add photo: <img src="rahul.jpg" alt="Rahul Patil"> -->
+        <div class="member-card">
+            <div class="member-photo">
+                <!-- <div class="member-initial">S</div> -->
+                <img src="https://raw.githubusercontent.com/PranjalKhade09/webimages/main/sanskar.png" alt="Sanskar Patil"> 
+            </div>
+            <div class="member-info">
+                <div class="member-name">Sanskar Patil</div>
+                <div class="member-role">COORDINATOR</div>
+                <div class="member-bio">Specialist in events and team coordination. Keeps everything organized and ensures smooth operations.</div>
+                <div class="member-links">
+                <a href="#" title="LinkedIn">in</a>
+                <a href="mailto:#" title="Email">✉</a>
+                <a href="#" title="Instagram">ig</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<section id="activities">
+    <h2>Activities</h2>
+
+    
+    <div class="activities-grid">
+
+        <div class="activity-card">
+            <h3>Soft Skills Development</h3>
+            <button class="view-btn" onclick="openPopup('softskills')">
+                View Details
+            </button>
+        </div>
+
+        <div class="activity-card">
+            <h3>Python Workshop</h3>
+            <button class="view-btn" onclick="openPopup('python')">
+                View Details
+            </button>
+        </div>
+
+        <div class="activity-card">
+            <h3>AI & Machine Learning</h3>
+            <button class="view-btn" onclick="openPopup('ai')">
+                View Details
+            </button>
+        </div>
+
+         <div class="activity-card">
+            <h3>Team Building & Project Management</h3>
+            <button class="view-btn" onclick="openPopup('teambuilding')">
+                View Details
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<div id="softskills" class="popup">
+    <div class="popup-content">
+
+        <span class="close" onclick="closePopup('softskills')">&times;</span>
+
+        <h2>Soft Skills Development</h2>
+
+        <h3>Activity Photo</h3>
+
+        <img src="softskills1.jpg"
+             class="activity-photo"
+             onclick="openPopup('softphoto1')">
+
+        <br><br>
+
+        <button class="view-btn"
+                onclick="openPopup('softphoto1')">
+            View Photo
+        </button>
+
+        <p><b>Activity Name:</b> Soft Skills Development</p>
+
+        <h3>Skills Developed</h3>
+        <ul>
+            <li>Communication Skills</li>
+            <li>Leadership Skills</li>
+            <li>Teamwork</li>
+            <li>Presentation Skills</li>
+        </ul>
+
+    </div>
+</div>
+
+<div id="softphoto1" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('softphoto1')">&times;</span>
+
+        <h2>Soft Skills Activity Photo</h2>
+
+        <img src="softskills1.jpg"
+             style="width:100%; border-radius:12px;">
+    </div>
+</div>
+
+<!-- Python Activity -->
+<div id="python" class="popup">
+    <div class="popup-content" style="max-height:80vh; overflow-y:auto;">
+
+        <span class="close" onclick="closePopup('python')">&times;</span>
+
+        <h2>Python Workshop</h2>
+
+        <h3>Activity Photo</h3>
+
+        <img src="python.jpg"
+             class="activity-photo"
+             onclick="openPopup('pythonphoto1')">
+
+        <br><br>
+
+        <button class="view-btn"
+                onclick="openPopup('pythonphoto1')">
+            View Photo
+        </button>
+
+        <p><b>Activity Name:</b> Python Workshop</p>
+
+            <h3>Day 1</h3>
+        <button class="view-btn"
+        onclick="document.getElementById('pdfviewer').src='https://docs.google.com/gview?embedded=true&url=https://raw.githubusercontent.com/PranjalKhade09/webimages/main/day1.pdf'">
+        View PDF
+        </button>
+
+        <h3>Day 2</h3>
+        <button class="view-btn"
+        onclick="document.getElementById('pdfviewer').src='day2.pdf'">
+        View PDF
+        </button>
+
+        <h3>Day 3</h3>
+        <button class="view-btn"
+        onclick="document.getElementById('pdfviewer').src='day3.pdf'">
+        View PDF
+        </button>
+
+        <h3>Day 4</h3>
+        <button class="view-btn"
+        onclick="document.getElementById('pdfviewer').src='day4.pdf'">
+        View PDF
+        </button>
+
+        
+        <h3>Day 5</h3>
+        <button class="view-btn"
+        onclick="document.getElementById('pdfviewer').src='https://docs.google.com/gview?embedded=true&url=https://raw.githubusercontent.com/PranjalKhade09/webimages/main/day5.pdf'">
+        View PDF
+        </button>
+
+        <br><br>
+
+        <iframe id="pdfviewer"
+                width="100%"
+                height="500"
+                style="border-radius:10px;">
+        </iframe>
+    </div>
+</div>
+
+<!-- Python Full Image Popup -->
+<div id="pythonphoto1" class="popup">
+    <div class="popup-content">
+
+        <span class="close"
+              onclick="closePopup('pythonphoto1')">
+            &times;
+        </span>
+
+        <h2>Daily Activities Photos</h2>
+
+        <img src="python.jpg"
+             style="width:100%; border-radius:12px;">
+
+    </div>
+</div>
+
+<!-- AI -->
+<div id="ai" class="popup">
+    <div class="popup-content">
+
+        <span class="close" onclick="closePopup('ai')">&times;</span>
+
+        <h2>AI & Machine Learning</h2>
+
+        <h3>Activity Photo</h3>
+
+        <img src="ai1.jpg"
+             class="activity-photo"
+             onclick="openPopup('aiphoto1')">
+
+        <br><br>
+
+        <button class="view-btn"
+                onclick="openPopup('aiphoto1')">
+            View Photo
+        </button>
+
+        <p><b>Activity Name:</b> AI & Machine Learning</p>
+
+        <h3>Skills Developed</h3>
+        <ul>
+            <li>AI Fundamentals</li>
+            <li>Machine Learning Concepts</li>
+            <li>Data Analysis</li>
+            <li>Model Development</li>
+        </ul>
+
+    </div>
+</div>
+
+<!-- Team Building & Project Management -->
+<div id="teambuilding" class="popup">
+    <div class="popup-content">
+
+        <span class="close" onclick="closePopup('teambuilding')">&times;</span>
+
+        <h2>Team Building & Project Management</h2>
+
+        <h3>Activity Photo</h3>
+
+        <img src="team1.jpg"
+             class="activity-photo"
+             onclick="openPopup('teamphoto1')">
+
+        <br><br>
+
+        <button class="view-btn"
+                onclick="openPopup('teamphoto1')">
+            View Photo
+        </button>
+
+        <p><b>Activity Name:</b> Team Building & Project Management</p>
+
+        <h3>Skills Developed</h3>
+        <ul>
+            <li>Team Collaboration</li>
+            <li>Leadership Skills</li>
+            <li>Project Planning</li>
+            <li>Task Management</li>
+            <li>Communication Skills</li>
+            <li>Problem Solving</li>
+        </ul>
+
+    </div>
+</div>
+
+<!-- Full Photo Popup -->
+<div id="teamphoto1" class="popup">
+    <div class="popup-content">
+
+        <span class="close" onclick="closePopup('teamphoto1')">&times;</span>
+
+        <h2>Team Building Activity Photo</h2>
+
+        <img src="team1.jpg"
+             style="width:100%; border-radius:12px;">
+
+    </div>
+</div>
+
+<script>
+function openPopup(id){
+    document.getElementById(id).style.display = "flex";
+}
+
+function closePopup(id){
+    document.getElementById(id).style.display = "none";
+}
+</script>
+
+</body>
+
+</section>
+
+
+<section id="identity">
+    <h2>Team Identity</h2>
+    <p><b>Why Solution Thinkers?</b> We aim to become leaders in technology and innovation.</p>
+
+    <h3>Core Values</h3>
+    <ul>
+        <li>Innovation</li>
+        <li>Teamwork</li>
+        <li>Integrity</li>
+        <li>Creativity</li>
+        <li>Continuous Learning</li>
+    </ul>
+</section>
+
+<section id="skills">
+    <h2>Skills Matrix</h2>
+
+    <table>
+        <tr>
+            <th>Member Name</th>
+            <th>Technical Skills</th>
+            <th>Soft Skills</th>
+        </tr>
+
+        <tr>
+            <td>Athrav Naik</td>
+            <td>Python, MS Office</td>
+            <td>Leadership</td>
+        </tr>
+
+        <tr>
+            <td>Pranjal Khade</td>
+            <td>Machine Learning</td>
+            <td>Problem Solving</td>
+        </tr>
+
+        <tr>
+            <td>Vaibhav Kambale</td>
+            <td>Canva, Figma</td>
+            <td>Creativity</td>
+        </tr>
+
+        <tr>
+            <td>Sanskar Patil</td>
+            <td>Documentation</td>
+            <td>Communication</td>
+        </tr>
+    </table>
+</section>
+
+<footer>
+    <div class="quick-links">
+    <div class="links-container">
+
+        <div class="links-column"> 
+            <h3>Team</h3>
+            <a href="#about">About Team</a>
+            <a href="#team">Meet Our Team</a>
+            <a href="#identity">Vision & Mission</a>
+            <a href="#skills">Skills Matrix</a>
+        </div>
+
+        <div class="links-column">
+            <h3>Activities</h3>
+            <a href="#activities">Soft Skills</a>
+            <a href="#activities">Python Workshop</a>
+            <a href="#activities">AI & ML</a>
+            <a href="#activities">Project Management</a>
+        </div>
+
+        <div class="links-column">
+            <h3>Resources</h3>
+            <a href="#">Learning Materials</a>
+            <a href="#">Workshop Notes</a>
+            <a href="#">Project Files</a>
+            <a href="#">Documentation</a>
+        </div>
+
+        <div class="links-column">
+            <h3>Connect</h3>
+            <a href="mailto:solutionthinkers@gmail.com">Email</a>
+            <a href="#">Instagram</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Contact Us</a>
+        </div>
+
+    </div>
+    </div>
+    <h3>Thank You!</h3>
+    <p>Email: solutionthinkers@gmail.com</p>
+    <p>Instagram: @solutionthinkers</p>
+</footer>
+
+</body>
